@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
 import CreateAppointment from './components/CreateAppointment';
-import AppointmentInfo from './components/appointmentInfo';
+import AppointmentInfo from './components/AppointmentInfo';
 
 // state should live here 
 

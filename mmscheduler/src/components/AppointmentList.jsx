@@ -1,15 +1,28 @@
 import React from "react";
-import AppointmentInfo from "./appointmentInfo";
+import AppointmentInfo from "./AppointmentInfo";
 
 // move this to App.js? 
 // change name from listAppointsments to AppointmentList
 
 function AppointmentList(props) {
     
+
     return( 
-        props.appointments.map((appointment) => 
-            <AppointmentInfo date={appointment.date} time={appointment.date} location={appointment.date} description={appointment.date} />
-        )
+        <table>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Description & Notes</th>
+          <th>+</th>
+          <th>+</th>
+        </tr>
+
+            <>{props.appointments.map((appointment) => 
+                <AppointmentInfo appointment={appointment} />
+            )}</>
+        
+        </table>
     )
 }
 
