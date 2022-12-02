@@ -66,7 +66,33 @@ class App extends React.Component {
       'time': '12h20m',
       'place': 'London',
       'description': 'Physical',
-      'index': 0}], date: '', time: '', place: '', description: 'Appointment Notes'}
+      'index': 0}], 
+      date: '', time: '', place: '', description: 'Appointment Notes',
+    inputMode: false,}
+}
+
+deleteAppointment = (index) => {
+  this.setState({
+
+  })
+}
+
+createAppointment = (index) => {
+  this.setState({
+
+  })
+}
+
+deleteAppointment = (index) => {
+  this.setState({
+
+  })
+}
+
+toggleInputMode() {
+  this.setState({
+   inputMode: !this.state.inputMode
+  });
 }
 
 render() {
@@ -79,8 +105,8 @@ render() {
         
       </header>
 
-      <AppointmentList appointments={this.state.appointment}/>
-  
+      <AppointmentList appointments={this.state.appointment} deleteAppointment={this.deleteAppointment} />
+      
     </div>
   );
   }
