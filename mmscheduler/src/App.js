@@ -60,7 +60,7 @@ function App() {
       </header>
 
       <div>
-        <AppointmentInfo date={appointment.date} time={appointment.time} place={appointment.place} description={appointment.description}/>
+        <AppointmentInfo appointment={appointment}/>
       </div>
     </div>
   );

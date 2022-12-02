@@ -12,9 +12,9 @@ function AppointmentInfo(props) {
     return (
         <div>
             <p>
-            <h4>Date & Time: <small>{props.date}</small> at <small>{props.time}</small></h4>
-            <h4>Location: <small>{props.place}</small></h4>
-            <h5>Description: <small>{props.description}</small></h5>
+            <h4>Date & Time: <small>{props.appointment.date}</small> at <small>{props.appointment.time}</small></h4>
+            <h4>Location: <small>{props.appointment.place}</small></h4>
+            <h5>Description: <small>{props.appointment.description}</small></h5>
             </p>
         </div>
     )
