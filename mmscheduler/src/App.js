@@ -47,7 +47,16 @@ function App() {
     'description': 'Physical',
     'index': 0,}
   
+  function newAppointment(date, time, place, description){
 
+    appointment = {
+      'date': date,
+      'time': time,
+      'place': place,
+      'description': description
+    }
+  
+}
 
 
   return (
