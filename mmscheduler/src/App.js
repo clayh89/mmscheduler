@@ -1,8 +1,7 @@
 import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
-import CreateAppointment from './components/CreateAppointment';
-import AppointmentInfo from './components/AppointmentInfo';
 
 // state should live here 
 
@@ -28,11 +27,8 @@ import AppointmentInfo from './components/AppointmentInfo';
 */
 
 
-
-
-function App() {
-
-  const appointments = [
+/*
+const appointments = [
     {'date': '2022-10-11',
     'time': '12h20m',
     'place': 'London',
@@ -57,8 +53,23 @@ function App() {
     }
   
 }
+*/
 
 
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {appointment:
+      [{'date': '2022-10-11',
+      'time': '12h20m',
+      'place': 'London',
+      'description': 'Physical',
+      'index': 0}], date: '', time: '', place: '', description: 'Appointment Notes'}
+}
+
+render() {
   return (
     <div className="App">
       <header className="App-header">
@@ -68,10 +79,11 @@ function App() {
         
       </header>
 
-      <AppointmentList appointments={appointments}/>
+      <AppointmentList appointments={this.state.appointment}/>
   
     </div>
   );
+  }
 }
-
+//
 export default App;
