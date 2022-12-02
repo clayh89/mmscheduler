@@ -59,9 +59,8 @@ function App() {
         
       </header>
 
-      <div>
-        <AppointmentInfo appointment={appointment}/>
-      </div>
+      <AppointmentList appointments={appointments}/>
+  
     </div>
   );
 }
