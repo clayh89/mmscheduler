@@ -3,12 +3,13 @@ import React from "react";
 class CreateAppointment extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {date: '', time: '', location: '', description: 'Appointment Notes'}
+        this.state = {date: '', time: '', place: '', description: 'Appointment Notes'}
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
+        this.props.updateState({'date':date, 'time':time, 'place': place, 'description': description})
         // add to parent appointment array
         event.preventDefault();
       }
@@ -53,3 +54,5 @@ class CreateAppointment extends React.Component {
     }
         
 }
+
+export default CreateAppointment
