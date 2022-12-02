@@ -2,30 +2,9 @@ import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
+import CreateAppointment from './components/CreateAppointment';
 
 // state should live here 
-
-/*
-
-
-
-
- state = {
-    appointments: {},
-    appointmentIndex: 0,
-  }
-
-  newAppointment = (appointment) => {
-    appointment.index = state.appointmentIndex;
-    this.appointments.push(appointment)
-  }
-
-      <div>
-        <AppointmentList></AppointmentList>
-        <CreateAppointment updateState={this.newAppointment}></CreateAppointment>
-      </div>
-*/
-
 
 /*
 const appointments = [
@@ -56,7 +35,6 @@ const appointments = [
 */
 
 
-
 class App extends React.Component {
 
   constructor(props) {
@@ -67,26 +45,28 @@ class App extends React.Component {
       'place': 'London',
       'description': 'Physical',
       'index': 0}], 
-      date: '', time: '', place: '', description: 'Appointment Notes',
-    inputMode: false,}
+      newAppointment: 
+      { date: '', time: '', place: '', description: 'Appointment Notes',
+      },
+      inputMode: false,}
 }
 
 deleteAppointment = (index) => {
   this.setState({
 
-  })
+  });
 }
 
 createAppointment = (index) => {
   this.setState({
 
-  })
+  });
 }
 
-deleteAppointment = (index) => {
+updateAppointment = (index) => {
   this.setState({
 
-  })
+  });
 }
 
 toggleInputMode() {
@@ -96,6 +76,7 @@ toggleInputMode() {
 }
 
 render() {
+  const inputMode = this.state.inputMode; 
   return (
     <div className="App">
       <header className="App-header">
@@ -104,8 +85,11 @@ render() {
           <p>Our telehealth services are available at all other times - just select one outside the window</p>
         
       </header>
-
-      <AppointmentList appointments={this.state.appointment} deleteAppointment={this.deleteAppointment} />
+      {inputMode
+        ? <CreateAppointment />
+        : <AppointmentList appointments={this.state.appointment} deleteAppointment={this.deleteAppointment} />
+      }
+     
       
     </div>
   );

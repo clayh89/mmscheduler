@@ -16,3 +16,12 @@ The data is not persistent as it lives in the frontend. However, it would be eas
 
 The app was initialized with create-react-aopp 
 
+My first move was to make pages for each CRUD operation. This seemed like it would work smoothly - each one could edit the db-type-thing I'd hack together in a parent state. 
+
+This didn't totally work, in practice - coding, I ran into obvious optimizations moving things around, and I eventually decided I'd have the main App.js state handle it all. 
+
+I like this better - delete doesn't need a page (I'm thinking in routes but don't need it here) and edit is just a kind of specialized instance of create,  from a front end perspective. 
+
+This does mean I need some sort of index tracking, though. 
+
+Using a state toggle to swap between an input and a list
