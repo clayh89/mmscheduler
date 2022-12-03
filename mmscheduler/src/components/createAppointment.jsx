@@ -1,22 +1,27 @@
 import React from "react";
 
+//right now this does state for each input but I could probably just do a submit handler instead... 
+// so pull handle change, make handle submit pull from form and not component state
+
 class CreateAppointment extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {date: '', time: '', place: '', description: 'Appointment Notes'}
+        this.state = {date: this.props.date, time: this.props.time, place: this.props.place, description: this.props.description}
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
-        this.props.updateState({'date':date, 'time':time, 'place': place, 'description': description})
-        // add to parent appointment array
         event.preventDefault();
+        this.props.updateNewAppointmentState({'date':this.state.date, 'time':this.state.time, 'place': this.state.place, 'description': this.state.description})
+        // add to parent appointment array
+        
       }
 
       handleInputChange(event) {
         const target = event.target;
         const name = target.name;
+        const value = target.value; 
         this.setState({
           [name]: value    });
       }

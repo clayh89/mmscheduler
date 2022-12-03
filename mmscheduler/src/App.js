@@ -48,6 +48,8 @@ class App extends React.Component {
       newAppointment: 
       { date: '', time: '', place: '', description: 'Appointment Notes',
       },
+      newDate: '', newTime: '', newPlace: '', newDescription: '',
+      appointmentIndex: 0, 
       inputMode: false,}
 }
 
@@ -57,9 +59,17 @@ deleteAppointment = (index) => {
   });
 }
 
-createAppointment = (index) => {
+createAppointment = (date, time, place, description) => {
+  const newAppointment = {
+    'date' : date,
+    'time' : time,
+    'place' : place,
+    'description' : description,
+    'key': this.state.appointmentIndex
+  }
+  
   this.setState({
-
+    appointments: [...this.state.appointments, newAppointment ]
   });
 }
 
@@ -69,7 +79,7 @@ updateAppointment = (index) => {
   });
 }
 
-toggleInputMode() {
+ toggleInputMode() {
   this.setState({
    inputMode: !this.state.inputMode
   });
@@ -86,7 +96,7 @@ render() {
         
       </header>
       {inputMode
-        ? <CreateAppointment />
+        ? <CreateAppointment date={this.state.newDate} time={this.state.newTime} place={this.state.newPlace} description={this.state.newDescription} />
         : <AppointmentList appointments={this.state.appointment} deleteAppointment={this.deleteAppointment} />
       }
      
