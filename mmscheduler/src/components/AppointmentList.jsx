@@ -3,7 +3,7 @@ import AppointmentInfo from "./AppointmentInfo";
 
 // move this to App.js? 
 // change name from listAppointsments to AppointmentList
-
+// editItem={props.editItem()} deleteItem={props.deleteItem()}
 function AppointmentList(props) {
     
 

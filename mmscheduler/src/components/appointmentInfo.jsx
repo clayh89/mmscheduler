@@ -12,6 +12,7 @@ import React from "react";
             <h5>Description: <small>{props.appointment.description}</small></h5>
             </p>
 </div>
+onClick={props.editItem(props.appointment.index)}
 */
 function AppointmentInfo(props) {
 
@@ -21,9 +22,9 @@ function AppointmentInfo(props) {
         <tr>
             <td>{props.appointment.date}</td>
             <td>{props.appointment.time}</td>
-            <td>{props.appointment.location}</td>
+            <td>{props.appointment.place}</td>
             <td>{props.appointment.description}</td>
-            <td><button>Edit</button></td>
+            <td><button >Edit</button></td>
             <td><button>Delete</button></td>
         </tr>
     )

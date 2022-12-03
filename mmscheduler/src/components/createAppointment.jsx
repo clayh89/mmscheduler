@@ -18,6 +18,7 @@ class CreateAppointment extends React.Component {
         
       }
 
+    // I... don't think this is quite right
       handleInputChange(event) {
         const target = event.target;
         const name = target.name;
