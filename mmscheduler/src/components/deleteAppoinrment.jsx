@@ -5,7 +5,7 @@ import React from "react";
 function DeleteAppointment() {
     
     return(
-        <button onClick={deleteItem}>  Activate Lasers
+        <button onClick={deleteItem}> Delete
         </button>
     )
 }

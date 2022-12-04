@@ -1,9 +1,9 @@
 import React from "react";
 import AppointmentInfo from "./AppointmentInfo";
 
-// move this to App.js? 
-// change name from listAppointsments to AppointmentList
-// editItem={props.editItem()} deleteItem={props.deleteItem()}
+// builds an appointment table
+// takes appointments object, maps it out w/ passed buttons from the parent (here, App.js)
+// <AppointmentList appointments={{}} editButton={''} deleteButton={''}
 function AppointmentList(props) {
     
 
@@ -19,7 +19,7 @@ function AppointmentList(props) {
         </tr>
 
             <>{props.appointments.map((appointment) => 
-                <AppointmentInfo appointment={appointment} />
+                <AppointmentInfo appointment={appointment} editButton={props.editButton} deleteButton={props.deleteButton} />
             )}</>
         
         </table>

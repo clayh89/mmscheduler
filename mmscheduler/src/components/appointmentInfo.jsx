@@ -1,19 +1,11 @@
 import React from "react";
 
 // this was displayAppointment
-/*
-<button onClick={props.editItem()}>Edit!</button>
-<button onClick={props.deleteItem()}> Delete!</button>
+// table row component. probably could live in the list one but this is more modular. does wanna be used with map 
+// (i.e. used on a data array to generate the content of a table w/ the map method)
+// buttons call functions from App.js
+// <AppointmentInfo appointment={{}} deleteButton={'function'} editButton={'function'} />
 
-<div>
-            <p>
-            <h4>Date & Time: <small>{props.appointment.date}</small> at <small>{props.appointment.time}</small></h4>
-            <h4>Location: <small>{props.appointment.place}</small></h4>
-            <h5>Description: <small>{props.appointment.description}</small></h5>
-            </p>
-</div>
-onClick={props.editItem(props.appointment.index)}
-*/
 function AppointmentInfo(props) {
 
     
@@ -24,8 +16,8 @@ function AppointmentInfo(props) {
             <td>{props.appointment.time}</td>
             <td>{props.appointment.place}</td>
             <td>{props.appointment.description}</td>
-            <td><button >Edit</button></td>
-            <td><button>Delete</button></td>
+            <td><button onClick={() => props.editButton(props.appointment.key)}>Edit</button></td>
+            <td><button onClick={() => props.deleteButton(props.appointment.key)}>Delete</button></td>
         </tr>
     )
     
