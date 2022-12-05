@@ -1,6 +1,11 @@
+// Henry Clay December 2022 
+// mmScheduler app 
+// a basic demo of a CRUD scheduler app in vanilla React (no libraries!)
+
 import React from 'react';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
+
 // This is the actual app. 
 // Child components for display features (where data is flowing down) but the form was happier living here
 // Implements Create and Update based on whether there's an existing appointment w/ that key/ID 
@@ -19,6 +24,10 @@ class App extends React.Component {
       inputMode: false,
     }
   }
+
+  ///////////////////////////////////////////////////////
+  // form handler functions
+  ///////////////////////////////////////////////////////
 
   // form input handler 
   // gets relevant info from the event that called it 
@@ -48,6 +57,10 @@ class App extends React.Component {
       inputMode : false
     })
   }
+
+  ///////////////////////////////////////////////////////
+  // CRUD functions
+  ///////////////////////////////////////////////////////
 
   // updates appointment info for appointments array @ a given key 
   // if there's no appointment at the index (tracked @ app level), then an appointment is created
@@ -84,7 +97,20 @@ class App extends React.Component {
     )
   }
 
-  // this gets the form and key info set up to do an edit. 
+  // this deletes by key! short n sweet. gets called via a button on the grand-child component
+  deleteAppointment = (index) => {
+    this.setState({
+      appointments: this.state.appointments.filter(appointment => appointment.key !== index )
+    });
+  }
+
+  ///////////////////////////////////////////////////////
+  // Mode toggle functions (also handle buffer logic)
+  ///////////////////////////////////////////////////////
+
+  // this gets the form and key info set up to do an edit.
+  //  gets called via a button on the grand-child component
+  // not actually the thing that does the operation, just sets up the form 
   editAppointment = (index) => {
 
     const target = this.state.appointments.filter(appointment => appointment.key === index)[0]
@@ -100,18 +126,26 @@ class App extends React.Component {
     });
   }
 
-  // this deletes by key! short n sweet. gets called by the grand-child component
-  deleteAppointment = (index) => {
-    this.setState({
-      appointments: this.state.appointments.filter(appointment => appointment.key !== index )
-    });
-  }
-
   // lets you swap between listing the appointments and making a new one
+  // this was a very basic toggle for testing before I realized it was kinda essential 
+  // so now it clears the input buffer state so that you don't get stuck ediitng
+  // original version:  
+  /* 
+  this.setState({
+        inputMode: !this.state.inputMode
+      })
+  */
+  // but if we're doing flow controls anyway that's one less evaluation 
    toggleInputMode = () => {
-    this.setState({
-     inputMode: !this.state.inputMode
-    });
+    if (this.state.inputMode) {
+      this.setState({
+        newDate: '', newTime: '', newPlace: '', newDescription: '', newKey: '', inputMode: false
+      })
+    } else (
+      this.setState({
+        inputMode: !this.state.inputMode
+      })
+    )
   }
 
   render() {
