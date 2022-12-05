@@ -1,8 +1,10 @@
 import React from "react";
 
+// deprecated.. 
+
 //right now this does state for each input but I could probably just do a submit handler instead... 
 // so pull handle change, make handle submit pull from form and not component state
-
+// <CreateAppointment date={this.state.newDate} time={this.state.newTime} place={this.state.newPlace} description={this.state.newDescription} />
 class CreateAppointment extends React.Component {
     constructor(props) {
         super(props);

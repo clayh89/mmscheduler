@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+//deprecated
+
 //functional version of appointment form
 //template implementation: <NewEditAppointment date={''} time={''} place={''} description={''} handleSubmit={'function'} />
 // I kinda like this - this is something I often want in React projects (a list of what props the functional component wants)

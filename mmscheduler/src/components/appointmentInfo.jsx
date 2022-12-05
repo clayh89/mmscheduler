@@ -8,8 +8,6 @@ import React from "react";
 
 function AppointmentInfo(props) {
 
-    
-
     return (
         <tr>
             <td>{props.appointment.date}</td>
