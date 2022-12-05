@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mmscheduler/static/css/main.1a2e4531.css",
-    "main.js": "/mmscheduler/static/js/main.97a9e4d5.js",
+    "main.css": "/mmscheduler/static/css/main.3914575a.css",
+    "main.js": "/mmscheduler/static/js/main.72ff7d14.js",
     "index.html": "/mmscheduler/index.html",
-    "main.1a2e4531.css.map": "/mmscheduler/static/css/main.1a2e4531.css.map",
-    "main.97a9e4d5.js.map": "/mmscheduler/static/js/main.97a9e4d5.js.map"
+    "main.3914575a.css.map": "/mmscheduler/static/css/main.3914575a.css.map",
+    "main.72ff7d14.js.map": "/mmscheduler/static/js/main.72ff7d14.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a2e4531.css",
-    "static/js/main.97a9e4d5.js"
+    "static/css/main.3914575a.css",
+    "static/js/main.72ff7d14.js"
   ]
 }
