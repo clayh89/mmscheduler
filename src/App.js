@@ -193,6 +193,7 @@ class App extends React.Component {
                 <label>
                     Location: 
                     <select id='place' name='newPlace' onChange={this.handleInputChange} value={this.state.newPlace} required>            
+                      <option value="" disabled></option>
                       <option value="London">London</option>
                       <option value="Orlando">Orlando</option>
                       <option value="Portland">Portland</option>
@@ -213,7 +214,7 @@ class App extends React.Component {
           : <AppointmentList appointments={this.state.appointments} editButton={this.editAppointment} deleteButton={this.deleteAppointment} />
         }
 
-
+        
       </div>
     );
   }

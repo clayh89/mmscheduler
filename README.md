@@ -22,9 +22,12 @@ I like this better - delete doesn't need a page (I'm thinking in routes but don'
 
 The main challenge turned out to be passing child state to parents (which, usually means I need to re-think my component flow). I considerd memoization and refs but ultimately KISS'd it by moving the stuff that needed to pass the state to the level it needed to be at. This meant less component code (less code-reuse to show off, I guess) but a more functional app. Again, though, I'm sort of in an MVP-type headspace designing this and with more time to focus on the details, there's probably a way to break up the App.js 
 
-This will get deployed on github, and styled a bit more! It's not terrible but it could be sleeker. 
+This is deployed on github at https://clayh89.github.io/mmscheduler/ - the styling is basic but there's a color scheme and the buttons and inputs are a bit nicer. Also, responsive-via-simplicity (I'll take it!). 
+
+I used gh-pages for the deployment which I wasn't sure counted as an external library or not. My thoughts are it seems like the first-party solution. Alternative would be loading the script into the html and just hosting the index.jss loading everything via a tag. It's always a little weird making these calls in situations where I'd either just know or be in a position to ask someone - if this is the make-or-break, please pretend I did everything via a script tag in index.html :) 
 
 Further improvements: 
  - a real backend 
- - time zone handling for appointments. right now it doesn't come up but it would be nice to display to/from UTC 
+ - time zone handling for appointments. right now it doesn't really come up as we don't check for conflicts but it would be nice to display to/from UTC 
+ - check for conflicts! right now theoretically there's not a 1 appointment per timeslot in our hypothetical e-clinic, but there are in the real world 
  - logic unit tests. tests were done by hand in browser (as front end integration was the priority) but we could validate some logic too
