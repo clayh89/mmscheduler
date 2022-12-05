@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mmscheduler/static/css/main.1a2e4531.css",
+    "main.js": "/mmscheduler/static/js/main.20c72b4a.js",
+    "index.html": "/mmscheduler/index.html",
+    "main.1a2e4531.css.map": "/mmscheduler/static/css/main.1a2e4531.css.map",
+    "main.20c72b4a.js.map": "/mmscheduler/static/js/main.20c72b4a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a2e4531.css",
+    "static/js/main.20c72b4a.js"
+  ]
+}
