@@ -17,7 +17,7 @@ function AppointmentInfo(props) {
             <td class = "place-T">{props.appointment.place}</td>
             <td class = "description-T">{props.appointment.description}</td>
             
-            <td><button onClick={() => props.deleteButton(props.appointment.key)} className="button deleteButton">Delete</button></td>
+            <td><button onClick={() => props.deleteButton(props.appointment.key)} className="button deleteButton">Cancel</button></td>
         </tr>
     )
     
