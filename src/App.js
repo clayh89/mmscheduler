@@ -154,7 +154,8 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Appointment Viewer & Scheduler</h1>
-          <p>In person hours are 8:00 AM to 9:00 PM. We're currently scheduling through the end of 2023 </p>
+          <p>In person hours are 8:00 AM to 9:00 PM. </p>
+          <p>We're currently scheduling through the end of 2023. </p>
           <p>All times are in the time zone of the respective clinic. </p>
           
         </header>
