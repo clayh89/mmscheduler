@@ -154,8 +154,8 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Appointment Viewer & Scheduler</h1>
-          <p>In person hours are 8:00 AM to 9:00 PM in the clinic's local time zone. </p>
-          <p>Our telehealth services are available at all other times - just select one outside the window</p>
+          <p>In person hours are 8:00 AM to 9:00 PM. </p>
+          <p>All times are in the time zone of the respective clinic. </p>
           
         </header>
         
@@ -180,17 +180,17 @@ class App extends React.Component {
             <div className = 'Form-Holder'>
             <form onSubmit={this.handleSubmit}>        
                 <label>
-                    Date:
+                    Date: 
                     <input id='date' name='newDate' type="date" onChange={this.handleInputChange} value={this.state.newDate} min="2023-01-01" max="2099-12-31" required/>        
-                </label>
-
-                <label>
-                    Time:
-                    <input id='time' name='newTime' type="time" onChange={this.handleInputChange} value={this.state.newTime} step='15' min='9:00' max='5:00' required/>        
                 </label>
                 <br />
                 <label>
-                    Location:
+                    Time: 
+                    <input id='time' name='newTime' type="time" onChange={this.handleInputChange} value={this.state.newTime} step='15000' min='08:00' max='21:00' required/>        
+                </label>
+                <br />
+                <label>
+                    Location: 
                     <select id='place' name='newPlace' onChange={this.handleInputChange} value={this.state.newPlace} required>            
                       <option value="London">London</option>
                       <option value="Orlando">Orlando</option>
@@ -199,13 +199,13 @@ class App extends React.Component {
                       <option value="San Diego">San Diego</option>
                     </select>      
                 </label>
-
+                <br />
                 <label>
-                    Description:
+                    Notes {'(optional)'} :
                     <textarea id='description' name='newDescription' onChange={this.handleInputChange} value={this.state.newDescription} />        
                 </label>
                 <br />
-                <input id='submit' type="submit" value="Submit" />
+                <input id='submit' type="submit" value="Submit" className='input-button' />
             </form>
           </div>)
 

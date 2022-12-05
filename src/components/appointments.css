@@ -1,0 +1,54 @@
+.Table-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: azure;
+}
+
+.Appointment-list {
+    font-size: 1em;
+}
+
+.time-T {
+
+}
+
+.date-T {
+    
+}
+
+.place-T {
+    
+}
+
+.description-T {
+    
+}
+
+tr td {
+    padding: 1em;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: .5em 2em;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.deleteButton {
+    background-color: #555555;
+}
+
+.editButton {
+    background-color: #e7e7e7; color: black;
+}
