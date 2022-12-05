@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
 import CreateAppointment from './components/CreateAppointment';
+import NewEditAppointment from './components/NewEditAppointment';
 
 // This is the actual app. 
 // Child components for various features i.e. list display, appointment creation form
@@ -48,11 +49,39 @@ class App extends React.Component {
       inputMode: false,}
 }
 
-// this deletes by id! short n sweet
-deleteAppointment = (index) => {
+handleInputChange(event) {
+  const target = event.target;
+  // check for date vs text... but idk if this actually matters
+  /*
+  if (target.type === 'date') {
+    {something}
+  }
+  else {
+    const value = target.value;
+  }
+  */
+  // since both time and date inputs dump strings, this shoudl Just Work
+  const value = target.value;
+  const name = target.name;
   this.setState({
-    appointments: this.state.appointments.filter(appointment => appointment.key !== index )
+    [name]: value    
   });
+}
+
+// rather than actually submitting the form we need to update the state array 
+handleSubmit(event) {
+  // block submission
+  event.preventDefault();
+  // create new appointment (this handles indexing)
+  this.createAppointment(this.newDate, this.newTime, this.newPlace, this.newDescription)
+  // refreshes form
+  this.setState({
+    newDate: '', 
+    newTime: '', 
+    newPlace: '', 
+    newDescription: ''
+  })
+  
 }
 
 // this pulls the global index and updates it by 1. 
@@ -72,27 +101,48 @@ createAppointment = (date, time, place, description) => {
   });
 }
 
-// this does the actual changes for the edit. 
-// constructs new array via filter method, removing selected obj and then adding a new one w/ the same key 
-// order gets messed up but thats why we have keys instead of doing it by array location in the first place
+// updates appointment info for appointments array @ a given key 
+// this either Creates a new appointment, if the key is empty, or Updates the existing one if it
+// is already present. takes the index to check which will be either the existing one's key, or 
+// the globally incremented array index variable 
 updateAppointment = (index) => {
-  //grabs selected appointment as target
-  const target = this.state.appointments.filter(appointment => appointment.key == index)[0]
-
+  // create and update both involve basically a new object. update just shares the db position. 
+  // the newVAL state should be set by the thing that calls this, we just assume it's correct. 
   const newAppointment = {
     'date' : this.state.newDate,
     'time' : this.state.newTime,
     'place' : this.state.newPlace,
     'description' : this.state.newDescription,
-    'key': target.key
+    'key': ''
+  }
+
+  // getting funky here. this needs to create or update an existing one 
+  // so we need logic to find out what we're doing
+  const target = this.state.appointments.filter(appointment => appointment.key == index) 
+  // calling this ^ with an out of bounds key # (i.e. k > # of created appointments) will give you 0 hits. 
+  // so 0 length array. otherwise the key should be unique and we expect 1 result
+  
+  // newAppointment already is set up, this assigns the key - 
+  // if target.length is 0, then !0 will evaluate to true. otherwise, we assume we had a hit with the above
+  if (!target.length) {
+    newAppointment.key = index
+    newIndex = index + 1 
+    this.setState({
+      appointmentIndex : newIndex
+    })
+  } else {
+    newAppointment.key = target[0].key
   }
   // filters out target and then uses spread to add newly edited one (this disrupts order of keys) (which is fine)
-  const newList = [...this.state.appointments.filter(appointment => appointment.key !== index)[0], newAppointment]
+  const newList = [...this.state.appointments.filter(appointment => appointment.key !== index), newAppointment]
   
   this.setState({
     appointments: newList
   });
+    //grabs selected appointment as target - needs the [0] as filter returns an array
+    //const target = this.state.appointments.filter(appointment => appointment.key == index)[0] 
 }
+
 
 // this is sort of a specialized toggle - swaps and gets the old info ready, but actually doing the DB op is another function
 editAppointment = (index) => {
@@ -108,6 +158,14 @@ editAppointment = (index) => {
   
   });
 }
+
+// this deletes by id! short n sweet. gets called by the grand-child component
+deleteAppointment = (index) => {
+  this.setState({
+    appointments: this.state.appointments.filter(appointment => appointment.key !== index )
+  });
+}
+
 
 // lets you swap between listing the appointments and making a new one
  toggleInputMode() {
@@ -127,7 +185,9 @@ render() {
       </header>
       <button onClick={(() => this.toggleInputMode())}>{inputMode? 'View':'New'}</button>
       {inputMode
-        ? <CreateAppointment date={this.state.newDate} time={this.state.newTime} place={this.state.newPlace} description={this.state.newDescription} />
+
+        ? <NewEditAppointment date={this.state.newDate} time={this.state.newDate} place={this.state.newDate} description={this.state.newDate} formInput={this.handleInputChange} handleSubmit={'function'} />
+        //? <CreateAppointment date={this.state.newDate} time={this.state.newTime} place={this.state.newPlace} description={this.state.newDescription} />
         : <AppointmentList appointments={this.state.appointments} editButton={this.editAppointment} deleteButton={this.deleteAppointment} />
       }
      
