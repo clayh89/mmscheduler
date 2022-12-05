@@ -7,11 +7,7 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+
 
 .App-header {
   background-color: #282c34;
@@ -24,15 +20,41 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Toggle-1 {
+  background-color:aqua;
+  width: 50%;
+  float: left;
+  flex: 1;
+  flex-direction: column;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Toggle-2 {
+  background-color:blueviolet;
+  width: 50%;
+  float: right;
+  flex: 1;
+  flex-direction: column;
+  color: white;
+}
+
+.Toggle-container {
+  min-height:10vh;
+  display: flex;
+  width:100%
+}
+
+.Form-Holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  text-shadow: 2px 2px gray;
+}
+
+.off {
+  text-shadow: 2px 2px gray;
 }

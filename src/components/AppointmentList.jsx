@@ -8,21 +8,23 @@ function AppointmentList(props) {
     
 
     return( 
-        <table>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Location</th>
-          <th>Description & Notes</th>
-          <th> </th>
-          <th> </th>
-        </tr>
+        <div className="Table-holder">
+            <table className="Appointment-list">
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th>Description & Notes</th>
+                  <th> </th>
+                  <th> </th>
+                </tr>
 
-            <>{props.appointments.map((appointment) => 
-                <AppointmentInfo appointment={appointment} editButton={props.editButton} deleteButton={props.deleteButton} />
-            )}</>
-        
-        </table>
+                <>{props.appointments.map((appointment) => 
+                    <AppointmentInfo appointment={appointment} editButton={props.editButton} deleteButton={props.deleteButton} />
+                )}</>
+
+            </table>
+        </div>
     )
 }
 

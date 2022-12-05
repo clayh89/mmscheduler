@@ -9,10 +9,10 @@ function AppointmentInfo(props) {
 
     return (
         <tr>
-            <td>{props.appointment.date}</td>
-            <td>{props.appointment.time}</td>
-            <td>{props.appointment.place}</td>
-            <td>{props.appointment.description}</td>
+            <td class = "date-T">{props.appointment.date}</td>
+            <td class = "time-T">{props.appointment.time}</td>
+            <td class = "place-T">{props.appointment.place}</td>
+            <td class = "description-T">{props.appointment.description}</td>
             <td><button onClick={() => props.editButton(props.appointment.key)}>Edit</button></td>
             <td><button onClick={() => props.deleteButton(props.appointment.key)}>Delete</button></td>
         </tr>

@@ -156,22 +156,39 @@ class App extends React.Component {
           <h1>Appointment Viewer & Scheduler</h1>
           <p>In person hours are 8:00 AM to 9:00 PM in the clinic's local time zone. </p>
           <p>Our telehealth services are available at all other times - just select one outside the window</p>
+          
         </header>
-        <button onClick={(() => this.toggleInputMode())}>{inputMode? 'View':'New'}</button>
+        
+        <> {inputMode ? (
+            <div className = 'Toggle-container'>
+              <div className = 'Toggle-1' onClick={(() => this.toggleInputMode())}><h3 className='off'>View Appointments</h3></div>
+              <div className = 'Toggle-2'><h3 className='selected'>New/Edit Appointment</h3></div> 
+            </div> )
+            : (
+              <div className = 'Toggle-container'>
+              <div className = 'Toggle-1' ><h3 className='off'>View Appointments</h3></div>
+              <div className = 'Toggle-2' onClick={(() => this.toggleInputMode())}><h3 className='selected'>New Appointment</h3></div> 
+            </div> 
+            )}
+        </>
     
         {inputMode
           // conditional left over from when the form was a child component 
           // this works better but pardon the ternery 
-          ? (<div>
+          ? (
+            
+            <div className = 'Form-Holder'>
             <form onSubmit={this.handleSubmit}>        
                 <label>
                     Date:
                     <input id='date' name='newDate' type="date" onChange={this.handleInputChange} value={this.state.newDate} min="2023-01-01" max="2099-12-31" required/>        
                 </label>
+
                 <label>
                     Time:
                     <input id='time' name='newTime' type="time" onChange={this.handleInputChange} value={this.state.newTime} step='15' min='9:00' max='5:00' required/>        
                 </label>
+                <br />
                 <label>
                     Location:
                     <select id='place' name='newPlace' onChange={this.handleInputChange} value={this.state.newPlace} required>            
@@ -182,10 +199,12 @@ class App extends React.Component {
                       <option value="San Diego">San Diego</option>
                     </select>      
                 </label>
+
                 <label>
                     Description:
                     <textarea id='description' name='newDescription' onChange={this.handleInputChange} value={this.state.newDescription} />        
                 </label>
+                <br />
                 <input id='submit' type="submit" value="Submit" />
             </form>
           </div>)
