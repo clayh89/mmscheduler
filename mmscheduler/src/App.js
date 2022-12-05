@@ -49,9 +49,12 @@ class App extends React.Component {
       inputMode: false,}
 }
 
+
+// this gets passed to the input form and does the state setting. 
+// name is written in the component 
 handleInputChange(event) {
   const target = event.target;
-  // check for date vs text... but idk if this actually matters
+  // check for date vs text... but idk if this actually matters since it gets dumped as text
   /*
   if (target.type === 'date') {
     {something}
@@ -69,11 +72,14 @@ handleInputChange(event) {
 }
 
 // rather than actually submitting the form we need to update the state array 
+// state should be set via form inputs already
+// this needs to know the index, but how do I pass that from just the event? 
+// could do it w/ a prop
 handleSubmit(event) {
   // block submission
   event.preventDefault();
   // create new appointment (this handles indexing)
-  this.createAppointment(this.newDate, this.newTime, this.newPlace, this.newDescription)
+  this.updateAppointment()
   // refreshes form
   this.setState({
     newDate: '', 
@@ -82,23 +88,6 @@ handleSubmit(event) {
     newDescription: ''
   })
   
-}
-
-// this pulls the global index and updates it by 1. 
-// kinda jank but adequate for this particular (demo) application
-createAppointment = (date, time, place, description) => {
-  const newAppointment = {
-    'date' : date,
-    'time' : time,
-    'place' : place,
-    'description' : description,
-    'key': this.state.appointmentIndex
-  }
-  const newIndexPosition = this.state.appointmentIndex + 1
-  this.setState({
-    appointments: [...this.state.appointments, newAppointment ],
-    appointmentIndex: newIndexPosition
-  });
 }
 
 // updates appointment info for appointments array @ a given key 
@@ -126,7 +115,7 @@ updateAppointment = (index) => {
   // if target.length is 0, then !0 will evaluate to true. otherwise, we assume we had a hit with the above
   if (!target.length) {
     newAppointment.key = index
-    newIndex = index + 1 
+    const newIndex = index + 1 
     this.setState({
       appointmentIndex : newIndex
     })
@@ -139,8 +128,7 @@ updateAppointment = (index) => {
   this.setState({
     appointments: newList
   });
-    //grabs selected appointment as target - needs the [0] as filter returns an array
-    //const target = this.state.appointments.filter(appointment => appointment.key == index)[0] 
+  
 }
 
 
