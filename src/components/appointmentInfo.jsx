@@ -1,9 +1,8 @@
 import React from "react";
 
-// this was displayAppointment
 // table row component. probably could live in the list one but this is more modular. does wanna be used with map 
 // (i.e. used on a data array to generate the content of a table w/ the map method)
-// buttons call functions from App.js
+// The buttons call functions from App.js. This might work better w/ parent component, but... code reuse? 
 // <AppointmentInfo appointment={{}} deleteButton={'function'} editButton={'function'} />
 
 function AppointmentInfo(props) {

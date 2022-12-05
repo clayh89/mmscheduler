@@ -14,8 +14,8 @@ function AppointmentList(props) {
           <th>Time</th>
           <th>Location</th>
           <th>Description & Notes</th>
-          <th>+</th>
-          <th>+</th>
+          <th> </th>
+          <th> </th>
         </tr>
 
             <>{props.appointments.map((appointment) => 

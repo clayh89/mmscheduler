@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import AppointmentList from './components/AppointmentList';
 // This is the actual app. 
-// Child components for various features i.e. list display, appointment creation form
-// toggle w/ state to display one or the other. 
-// App logic lives here entirely to simplify state updates. The functions are passed to children. 
-// Class rather than function because there's a lot going on here to implement w/ hooks 
+// Child components for display features (where data is flowing down) but the form was happier living here
+// Implements Create and Update based on whether there's an existing appointment w/ that key/ID 
+// Simple display - just lists apps (when this is toggled). Delete per item from display view  
+// This ended up as a class when I probably could have used hooks - my rationale was that I needed to do more lifecycle updates 
+// (this did not bear out), and then later that there would be a lot of state declarations, which I didn't love. 
 
 class App extends React.Component {
 
@@ -31,13 +32,11 @@ class App extends React.Component {
     });
   }
 
-  // form submission handler
-  // rather than actually submitting the form we need to update the state array 
+  // form submission handler - does array operations instead of sending the actual form
   handleSubmit = (event) => {
-    // block submission
     event.preventDefault();
     // create/update function - newKey is typically 1 more than there are appointments, but it gets set to an existing one
-    // to overwrite
+    // to overwrite, then calls function
     this.updateAppointment(this.state.newKey)
     // refreshes form state vals
     this.setState({
@@ -53,7 +52,7 @@ class App extends React.Component {
   // updates appointment info for appointments array @ a given key 
   // if there's no appointment at the index (tracked @ app level), then an appointment is created
   // otherwise, the old version is removed and replaced with the updated version 
-  updateAppointment(index){
+  updateAppointment = (index) => {
     // create the new/updated appointment object
     // index will typically be AppointmentIndex but it might be an existing one
     const newAppointment = {
@@ -66,21 +65,26 @@ class App extends React.Component {
     // remove any matching key appointments from the list (no hits for new appointment, 1 hit for updated)
     // then adds the newly created one at the end. replacing or just creating if it's new
     const newList = [...this.state.appointments.filter(appointment => appointment.key !== index), newAppointment]
-    //updates state 
-    this.setState({
-      appointments: newList
-    });
+    
     // conditionally increments the index - based on the assigned value because if it's lower it won't trigger, if it's higher it updates to it,
     // and if its the same (new item), it increments
     if (this.state.newKey >= this.state.appointmentIndex) {
       const newIndex  = this.state.newKey + 1 
       this.setState({
-        appointmentIndex : newIndex
+        appointmentIndex : newIndex,
+        appointments: newList
       })
     }
+    else (
+       // originally this was a conditional setState for the index after the list update. I think this is an optimization if both get called
+      // more often than just the 1? but React might be smarter than I'm trying to be here (and it works fine the other way)
+      this.setState({
+        appointments: newList
+      })
+    )
   }
 
-  // this is sort of a specialized toggle - swaps and gets the old info ready, but actually doing the DB op is another function
+  // this gets the form and key info set up to do an edit. 
   editAppointment = (index) => {
 
     const target = this.state.appointments.filter(appointment => appointment.key === index)[0]
@@ -104,7 +108,7 @@ class App extends React.Component {
   }
 
   // lets you swap between listing the appointments and making a new one
-   toggleInputMode() {
+   toggleInputMode = () => {
     this.setState({
      inputMode: !this.state.inputMode
     });
