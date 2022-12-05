@@ -8,10 +8,14 @@ function AppointmentList(props) {
     
 
     return( 
+
         <div className="Table-holder">
+    
             <table className="Appointment-list">
+                <> {props.appointments.length > 0 ?
                 <tr>
                 <th> </th>
+           
                   <th>Date</th>
                   <th>Time</th>
                   <th>Location</th>
@@ -19,12 +23,20 @@ function AppointmentList(props) {
                   
                   <th> </th>
                 </tr>
+                :  <tr>
+
+                </tr> 
+                // slightly hacky conditional here - hides table when no appointments
+                } 
+                </>
 
                 <>{props.appointments.map((appointment) => 
                     <AppointmentInfo appointment={appointment} editButton={props.editButton} deleteButton={props.deleteButton} />
                 )}</>
-
-            </table>
+            
+                    
+            </table> 
+        
         </div>
     )
 }

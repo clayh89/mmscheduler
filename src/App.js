@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      appointments: [{'date': '2022-10-11', 'time': '12h20m', 'place': 'London', 'description': 'Physical', 'key': 0}], 
+      appointments: [], 
       newDate: '', newTime: '', newPlace: '', newDescription: '', newKey: '',
       appointmentIndex: 1, 
       inputMode: false,
@@ -154,12 +154,13 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Appointment Viewer & Scheduler</h1>
-          <p>In person hours are 8:00 AM to 9:00 PM. </p>
+          <p>In person hours are 8:00 AM to 9:00 PM. We're currently scheduling through the end of 2023 </p>
           <p>All times are in the time zone of the respective clinic. </p>
           
         </header>
         
-        <> {inputMode ? (
+        <>  
+          {inputMode ? ( // conditional for toggle-divs
             <div className = 'Toggle-container'>
               <div className = 'Toggle-1' onClick={(() => this.toggleInputMode())}><h3 className='off'>View Appointments</h3></div>
               <div className = 'Toggle-2'><h3 className='selected'>New/Edit Appointment</h3></div> 
@@ -173,20 +174,20 @@ class App extends React.Component {
         </>
     
         {inputMode
-          // conditional left over from when the form was a child component 
-          // this works better but pardon the ternery 
+          // ternary is kinda weird for this much code - this was originally a two-liner but it works a lot better with the form in this 
+          // component. so, pardon the weirdness. 
           ? (
             
             <div className = 'Form-Holder'>
             <form onSubmit={this.handleSubmit}>        
                 <label>
                     Date: 
-                    <input id='date' name='newDate' type="date" onChange={this.handleInputChange} value={this.state.newDate} min="2023-01-01" max="2099-12-31" required/>        
+                    <input id='date' name='newDate' type="date" onChange={this.handleInputChange} value={this.state.newDate} min="2022-12-07" max="2023-12-31" required/>        
                 </label>
                 <br />
                 <label>
                     Time: 
-                    <input id='time' name='newTime' type="time" onChange={this.handleInputChange} value={this.state.newTime} step='15000' min='08:00' max='21:00' required/>        
+                    <input id='time' name='newTime' type="time" onChange={this.handleInputChange} value={this.state.newTime} step='900' min='08:00' max='21:00' required/>        
                 </label>
                 <br />
                 <label>
