@@ -1,4 +1,4 @@
-# mmscheduler
+## React App for mmScheduler
 
 A scheduling app developed in vanilla React. 
 
