@@ -23,3 +23,8 @@ I like this better - delete doesn't need a page (I'm thinking in routes but don'
 The main challenge turned out to be passing child state to parents (which, usually means I need to re-think my component flow). I considerd memoization and refs but ultimately KISS'd it by moving the stuff that needed to pass the state to the level it needed to be at. This meant less component code (less code-reuse to show off, I guess) but a more functional app. Again, though, I'm sort of in an MVP-type headspace designing this and with more time to focus on the details, there's probably a way to break up the App.js 
 
 This will get deployed on github, and styled a bit more! It's not terrible but it could be sleeker. 
+
+Further improvements: 
+ - a real backend 
+ - time zone handling for appointments. right now it doesn't come up but it would be nice to display to/from UTC 
+ - logic unit tests. tests were done by hand in browser (as front end integration was the priority) but we could validate some logic too
