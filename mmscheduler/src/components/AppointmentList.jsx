@@ -1,5 +1,5 @@
 import React from "react";
-import AppointmentInfo from "./AppointmentInfo";
+import AppointmentInfo from "./appointmentInfo";
 
 // builds an appointment table
 // takes appointments object, maps it out w/ passed buttons from the parent (here, App.js)

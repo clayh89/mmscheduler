@@ -33,7 +33,7 @@ class CreateAppointment extends React.Component {
                 <form onSubmit={this.handleSubmit}>        
                     <label>
                         Date:
-                        <input type="date" value={this.state.date} onChange={this.handleInputChange} min="2023-01-01" max="2099-12-31"/>        
+                        <input type="date" onChange={this.handleInputChange} min="2023-01-01" max="2099-12-31"/>        
                     </label>
                     <label>
                         Time:
@@ -41,7 +41,7 @@ class CreateAppointment extends React.Component {
                     </label>
                     <label>
                         Location:
-                        <select value={this.state.value} onChange={this.handleInputChange}>            
+                        <select onChange={this.handleInputChange}>            
                           <option value="London">London</option>
                           <option value="Orlando">Orlando</option>
                           <option value="Portland">Portland</option>
@@ -51,7 +51,7 @@ class CreateAppointment extends React.Component {
                     </label>
                     <label>
                         Description:
-                        <textarea value={this.state.value} onChange={this.handleInputChange} />        
+                        <textarea onChange={this.handleInputChange} />        
                     </label>
                     <input type="submit" value="Submit" />
                 </form>

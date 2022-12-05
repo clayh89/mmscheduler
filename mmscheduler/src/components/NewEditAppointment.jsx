@@ -1,25 +1,31 @@
 import React from "react";
+import { useState } from "react";
 
 //functional version of appointment form
 //template implementation: <NewEditAppointment date={''} time={''} place={''} description={''} handleSubmit={'function'} />
 // I kinda like this - this is something I often want in React projects (a list of what props the functional component wants)
 
-function NewEditAppointment() {
+function NewEditAppointment(props) {
+
+    const [date, setDate] = useState(props.date);
+    const [time, setTime] = useState(props.time);
+    const [place, setPlace] = useState(props.place);
+    const [description, setDescription] = useState(props.description);
 
     return (     
         <div>
             <form onSubmit={props.handleSubmit}>        
                 <label>
                     Date:
-                    <input id='date' name='newDate' type="date" value={props.date} onChange={props.formInput} min="2023-01-01" max="2099-12-31" required/>        
+                    <input id='date' name='newDate' type="date" onChange={e => setDate(e.target.value)} value={date} min="2023-01-01" max="2099-12-31" required/>        
                 </label>
                 <label>
                     Time:
-                    <input id='time' name='newTime' type="time" value={props.time} onChange={props.formInput} step='15' min='9:00' max='5:00' required/>        
+                    <input id='time' name='newTime' type="time" onChange={e => setTime(e.target.value)} value={time} step='15' min='9:00' max='5:00' required/>        
                 </label>
                 <label>
                     Location:
-                    <select id='place' name='newPlace' value={props.place} onChange={props.formInput} required>            
+                    <select id='place' name='newPlace' onChange={e => setPlace(e.target.value)} value={place} required>            
                       <option value="London">London</option>
                       <option value="Orlando">Orlando</option>
                       <option value="Portland">Portland</option>
@@ -29,7 +35,7 @@ function NewEditAppointment() {
                 </label>
                 <label>
                     Description:
-                    <textarea id='description' name='newDescription' value={props.description} onChange={props.formInput} />        
+                    <textarea id='description' name='newDescription' onChange={e => setDescription(e.target.value)} value={description} />        
                 </label>
                 <input id='submit' type="submit" value="Submit" />
             </form>
