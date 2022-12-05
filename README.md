@@ -25,3 +25,5 @@ I like this better - delete doesn't need a page (I'm thinking in routes but don'
 This does mean I need some sort of index tracking, though. 
 
 Using a state toggle to swap between an input and a list
+
+Tried a bunch of things - state worked much smoother w/ the form living in App.js vs a component. I could have looked into memoization and blocking re-renders but this seemed simpler for what ultimately didn't need that technical of a solution. 
